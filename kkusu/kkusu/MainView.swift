@@ -12,7 +12,7 @@ struct MainView: View {
     @Environment(\.modelContext) var modelContext
     @Query var fakeCallSet: [FakeCallSetting]
     @State private var sliderValue: Double = 50.0
-    @State var showModal: Bool = false
+    @Binding var isShowModal: Bool
 
     var body: some View {
         ZStack{
@@ -37,19 +37,18 @@ struct MainView: View {
                 
                 Spacer()
 
-                SetCallButton(showModal: $showModal)
+                SetCallButton(showModal: $isShowModal)
                     .padding(.bottom, 152)
-                
             }
         }
-        .ignoresSafeArea()
-        .sheet(isPresented: $showModal, content: {
-            SetView(showModal: $showModal)
+        .ignoresSafeArea(.all)
+        .sheet(isPresented: $isShowModal, content: {
+            SetView(showModal: $isShowModal)
         })
 
     }
 }
 
-#Preview {
-    MainView()
-}
+//#Preview {
+//    MainView(isShowModal: <#T##Binding<Bool>#>)
+//}

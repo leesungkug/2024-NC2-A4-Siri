@@ -43,8 +43,13 @@ struct GifView: UIViewRepresentable {
 
 struct AontentView: View {
     var body: some View {
-        GifView("mainBackground")
-            .frame(width: .infinity, height: 995)
+        ZStack {
+            GifView("mainBackground")
+        }
+        .edgesIgnoringSafeArea(.all) // Safe Area를 무시하고 전체 화면을
+
+//        GifView("mainBackground")
+//            .frame(width: .infinity, height: 995)
         
 //            .edgesIgnoringSafeArea(.all) // Safe Area를 무시하고 전체 화면을 덮도록 설정
     }

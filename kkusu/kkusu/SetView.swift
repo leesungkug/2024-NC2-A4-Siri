@@ -17,12 +17,12 @@ struct SetView: View {
 //    @State var shortcut: INShortcut = UserActivityShortcutsManager.Shortcut.fakeCall.makeShortcut()
 //    
     @Binding var showModal: Bool
-    @State private var selectedTime = 5
+    @State private var selectedTime = 0
     @State private var remindMe = false
     @State private var selectedCaller = "엄마"
     
-    let timeOptions = [5, 10, 15, 30, 60]
-    let callerOptions = ["엄마", "아빠", "오빠", "누나", "꾸기", "이수"]
+    let timeOptions = [0, 5, 10, 15, 30, 60]
+    let callerOptions = ["엄마", "아빠", "오빠", "형", "누나", "언니"]
 
     var body: some View {
         ZStack {
@@ -78,7 +78,12 @@ struct SetView: View {
         
         Picker("타이머", selection: $selectedTime) {
             ForEach(timeOptions, id: \.self) { time in
-                Text("\(time)초 후").tag(time)
+                if time == 0 {
+                    Text("없음").tag(time)
+
+                } else{
+                    Text("\(time)초 후").tag(time)
+                }
             }
         }
         .pickerStyle(MenuPickerStyle())
@@ -154,21 +159,19 @@ struct SetView: View {
     func initializeShortcut() {
         UserActivityShortcutsManager.getExistingVoiceShortcut(for: UserActivityShortcutsManager.Shortcut.fakeCall.type) { fetchedShortcut in
             if let fetchedShortcut = fetchedShortcut {
-                print("찾음")
                 self.shortcut = fetchedShortcut
             } else {
-                print("만듦")
                 self.shortcut = UserActivityShortcutsManager.Shortcut.fakeCall.makeShortcut()
             }
         }
     }
 }
 
-struct RedView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        @State var showModal = true
-
-        SetView(showModal: $showModal)
-    }
-}
+//struct RedView_Previews: PreviewProvider {
+//    
+//    static var previews: some View {
+//        @State var showModal = true
+//
+//        SetView(showModal: $showModal)
+//    }
+//}

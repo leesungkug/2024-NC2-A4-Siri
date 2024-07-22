@@ -14,12 +14,13 @@ struct ContentView: View {
     @StateObject var callProviderDelegate = FakeCallProviderDelegate()
     @State var isWait = false
     @State private var isShortcutHandled = false
+    @State var isShowModal = false
 
     var body: some View {
         if fakeCallSet.isEmpty{
-            MainView()
+            MainView(isShowModal: $isShowModal)
         } else {
-            ActivatedView(callProviderDelegate : callProviderDelegate, isWait: $isWait)
+            ActivatedView(callProviderDelegate : callProviderDelegate, isWait: $isWait, isShowModal: $isShowModal)
                 .onContinueUserActivity(UserActivityShortcutsManager.Shortcut.fakeCall.type, perform: { userActivity in
                     
                     guard !isShortcutHandled else { return }

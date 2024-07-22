@@ -15,6 +15,7 @@ struct ActivatedView: View {
     var callProviderDelegate : FakeCallProviderDelegate
     @State var shortcut: INShortcut? = nil
     @Binding var isWait: Bool
+    @Binding var isShowModal: Bool
 
     var body: some View {
         if !isWait{
@@ -53,6 +54,7 @@ struct ActivatedView: View {
                         guard let model = fakeCallSet.first else {
                             return
                         }
+                        isShowModal = true
                         modelContext.delete(model)
                     }, label: {
                         VStack{
@@ -73,7 +75,7 @@ struct ActivatedView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 79, height: 79)
-                            Text("미리보기")
+                            Text("실행하기")
                                 .foregroundStyle(.black)
                         }
                     })
@@ -89,16 +91,24 @@ struct ActivatedView: View {
     
     var WaitView: some View{
         VStack{
+            Spacer()
             HStack{
+                Text("ds")
                 Spacer()
             }
             Spacer()
         }
-        .background(ignoresSafeAreaEdges: .all)
         .background(.black)
+        .background(ignoresSafeAreaEdges: .all)
     }
 }
+
+
+//struct ActivatedView_Previews: PreviewProvider {
+//    
+//    static var previews: some View {
+//        @State var iswait = true
 //
-//#Preview {
-//    ActivatedView(callProviderDelegate: FakeCallProviderDelegate())
+//        ActivatedView(callProviderDelegate: FakeCallProviderDelegate(), isWait: $iswait)
+//    }
 //}
