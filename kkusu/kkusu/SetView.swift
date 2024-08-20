@@ -54,7 +54,7 @@ struct SetView: View {
                 List {
                     Section(header: Text("설정")) {
                         TimePicker
-                        ReAlret
+//                        ReAlret
                         CallerPicker
                         TriggerPicker
                     }

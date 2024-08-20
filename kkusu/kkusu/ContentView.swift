@@ -36,12 +36,12 @@ struct ContentView: View {
                             triggerFakeCall(callProviderDelegate: callProviderDelegate, caller: firstFakeCall.caller)
                         }
 
-                        if firstFakeCall.reAlret {
-                            print("reAlert")
-                            DispatchQueue.main.asyncAfter(deadline: .now() + reAlertDelay) {
-                                triggerFakeCall(callProviderDelegate: callProviderDelegate, caller: firstFakeCall.caller)
-                            }
-                        }
+//                        if firstFakeCall.reAlret {
+//                            print("reAlert")
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + reAlertDelay) {
+//                                triggerFakeCall(callProviderDelegate: callProviderDelegate, caller: firstFakeCall.caller)
+//                            }
+//                        }
                     }
                 })
                 .onChange(of: callProviderDelegate.isCallEnded) { oldValue, newValue in

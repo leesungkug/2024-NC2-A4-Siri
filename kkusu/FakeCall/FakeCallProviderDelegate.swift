@@ -66,7 +66,7 @@ final class FakeCallProviderDelegate: NSObject, ObservableObject, CXProviderDele
     }
     
     func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
-        self.playRecordedAudio()
+//        self.playRecordedAudio()
     }
     
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
