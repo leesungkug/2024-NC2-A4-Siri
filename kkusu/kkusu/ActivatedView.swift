@@ -28,17 +28,34 @@ struct ActivatedView: View {
     func fetchShortcut() {
         UserActivityShortcutsManager.getExistingVoiceShortcut(for: UserActivityShortcutsManager.Shortcut.fakeCall.type) { fetchedShortcut in
             if let fetchedShortcut = fetchedShortcut {
-                print("찾음")
                 self.shortcut = fetchedShortcut
             }
         }
     }
     
     var CheckView: some View {
-        ZStack{
+        ZStack(alignment: .top) {
             GifView("checkBackground")
                 .frame(height: 990)
-            VStack{
+            Button(action: {
+                if let fakeCall = fakeCallSet.first {
+                    modelContext.delete(fakeCall)
+                }
+            }, label: {
+                HStack {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .frame(width: 12, height: 24)
+                        .foregroundStyle(.tint)
+                    Text("뒤로")
+                        .font(.system(size: 16))
+                        .foregroundStyle(.tint)
+                    Spacer()
+                }
+            })
+            .padding(.top , 140)
+            .padding(.horizontal)
+            VStack {
                 Text("말해보세요")
                     .font(.system(size: 16))
                     .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
@@ -49,29 +66,29 @@ struct ActivatedView: View {
                     .foregroundStyle(.white)
                     .padding(.top, 1)
                 Spacer()
-                HStack{
-                    Button(action: {
-                        guard let model = fakeCallSet.first else {
-                            return
-                        }
-                        isShowModal = true
-                        modelContext.delete(model)
-                    }, label: {
-                        VStack{
-                            Image("재설정버튼")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 79, height: 79)
-                            Text("재설정")
-                                .foregroundStyle(.black)
-                        }
-                    })
-                    Spacer()
+//                HStack{
+//                    Button(action: {
+//                        guard let model = fakeCallSet.first else {
+//                            return
+//                        }
+//                        isShowModal = true
+//                        modelContext.delete(model)
+//                    }, label: {
+//                        VStack{
+//                            Image("재설정버튼")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 79, height: 79)
+//                            Text("재설정")
+//                                .foregroundStyle(.black)
+//                        }
+//                    })
+//                    Spacer()
                     Button(action: {
                         triggerFakeCall(callProviderDelegate: callProviderDelegate, caller: fakeCallSet.first?.caller ?? "엄마")
                     }, label: {
                         VStack{
-                            Image("미리보기버튼")
+                            Image("재설정버튼")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 79, height: 79)
@@ -79,7 +96,7 @@ struct ActivatedView: View {
                                 .foregroundStyle(.black)
                         }
                     })
-                }
+//                }
                 .padding(.bottom, 140)
                 .padding(.horizontal, 39)
             }

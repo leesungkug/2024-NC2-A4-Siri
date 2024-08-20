@@ -35,6 +35,8 @@
 		1EBBE4A52C22B7FB008E02BD /* checkBackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1EBBE4A42C22B7FB008E02BD /* checkBackground.gif */; };
 		1EBBE4A72C22B816008E02BD /* mainBackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1EBBE4A62C22B816008E02BD /* mainBackground.gif */; };
 		1EBBE4A92C22BAF0008E02BD /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EBBE4A82C22BAF0008E02BD /* CallKit.framework */; };
+		1EEECCF72C6F263000FA1254 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1EEECCF62C6F263000FA1254 /* Lottie */; };
+		1EEECCF92C6F27A300FA1254 /* MainLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EEECCF82C6F27A300FA1254 /* MainLottie.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,7 @@
 		1EBBE4A42C22B7FB008E02BD /* checkBackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = checkBackground.gif; sourceTree = "<group>"; };
 		1EBBE4A62C22B816008E02BD /* mainBackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mainBackground.gif; sourceTree = "<group>"; };
 		1EBBE4A82C22BAF0008E02BD /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		1EEECCF82C6F27A300FA1254 /* MainLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MainLottie.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EBBE4A92C22BAF0008E02BD /* CallKit.framework in Frameworks */,
+				1EEECCF72C6F263000FA1254 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +173,7 @@
 				1EBBE4852C211D15008E02BD /* SetView.swift */,
 				1EBBE4A02C21B229008E02BD /* ActivatedView.swift */,
 				1EBBE49E2C216FBF008E02BD /* GifImage.swift */,
+				1EEECCF82C6F27A300FA1254 /* MainLottie.json */,
 				1EBBE4942C215786008E02BD /* Buttons */,
 				1EBBE44B2C211A20008E02BD /* Assets.xcassets */,
 				1EBBE44D2C211A20008E02BD /* Preview Content */,
@@ -291,6 +296,9 @@
 				1EBBE4732C211ACC008E02BD /* PBXTargetDependency */,
 			);
 			name = kkusu;
+			packageProductDependencies = (
+				1EEECCF62C6F263000FA1254 /* Lottie */,
+			);
 			productName = kkusu;
 			productReference = 1EBBE4442C211A1E008E02BD /* kkusu.app */;
 			productType = "com.apple.product-type.application";
@@ -359,6 +367,9 @@
 				Base,
 			);
 			mainGroup = 1EBBE43B2C211A1E008E02BD;
+			packageReferences = (
+				1E02ADF32C63075800AB7E04 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 1EBBE4452C211A1E008E02BD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -378,6 +389,7 @@
 				1E2B14622C425CC0007796CC /* momSound.m4a in Resources */,
 				1EBBE44F2C211A20008E02BD /* Preview Assets.xcassets in Resources */,
 				1EBBE44C2C211A20008E02BD /* Assets.xcassets in Resources */,
+				1EEECCF92C6F27A300FA1254 /* MainLottie.json in Resources */,
 				1EBBE4A52C22B7FB008E02BD /* checkBackground.gif in Resources */,
 				1EBBE4902C212176008E02BD /* music.m4a in Resources */,
 				1EBBE4A72C22B816008E02BD /* mainBackground.gif in Resources */,
@@ -604,8 +616,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -614,9 +626,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ac.appleDevelop.kkusu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -639,8 +655,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -649,9 +665,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ac.appleDevelop.kkusu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -795,6 +815,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E02ADF32C63075800AB7E04 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1EEECCF62C6F263000FA1254 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E02ADF32C63075800AB7E04 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1EBBE43C2C211A1E008E02BD /* Project object */;
 }

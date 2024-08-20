@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Lottie
 
 struct MainView: View {
     @Environment(\.modelContext) var modelContext
