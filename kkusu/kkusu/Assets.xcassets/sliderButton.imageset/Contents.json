@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "sliderButton.png",
+      "filename" : "buttonbackground.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "buttonbackground 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "buttonbackground 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

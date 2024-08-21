@@ -32,7 +32,6 @@ struct ContentView: View {
                         let reAlertDelay = initialDelay + 120
 
                         DispatchQueue.main.asyncAfter(deadline: .now() + initialDelay) {
-                            print("alert")
                             triggerFakeCall(callProviderDelegate: callProviderDelegate, caller: firstFakeCall.caller)
                         }
 
@@ -46,7 +45,6 @@ struct ContentView: View {
                 })
                 .onChange(of: callProviderDelegate.isCallEnded) { oldValue, newValue in
                     if newValue {
-                        print("wait 상태 변함")
                         isWait = false
                     }
                 }

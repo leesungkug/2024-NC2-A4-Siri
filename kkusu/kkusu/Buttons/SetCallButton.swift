@@ -41,15 +41,15 @@ struct DraggingComponent: View {
     @Binding var showModal: Bool
     let maxWidth: CGFloat
     
-    private let minWidth = CGFloat(80)
-    @State private var offsetX: CGFloat = 0
+    private let minWidth = CGFloat(80 + 4)
+    @State private var offsetX: CGFloat = 4
     
     var body: some View {
         Image("callIcon")
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 80, height: 80)
-            .offset(x: offsetX)
+            .offset(x: offsetX, y: -4)
             .gesture(
                 DragGesture()
                     .onChanged { value in
@@ -62,7 +62,7 @@ struct DraggingComponent: View {
                     .onEnded { value in
                         guard isLocked else { return }
                         if offsetX < maxWidth - minWidth {
-                            offsetX = 0
+                            offsetX = 4
                             UINotificationFeedbackGenerator().notificationOccurred(.warning)
                         } else {
                             UINotificationFeedbackGenerator().notificationOccurred(.success)
