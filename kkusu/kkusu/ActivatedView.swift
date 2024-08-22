@@ -36,8 +36,11 @@ struct ActivatedView: View {
     
     var CheckView: some View {
         ZStack(alignment: .top) {
-            GifView("checkBackground")
-                .frame(height: 990)
+//            GifView("checkBackground")
+//                .frame(height: 990)
+            GifImageView(gifName: "checkBackground")
+            
+                .aspectRatio(contentMode: .fill)
             HStack {
                 Button(action: {
                     if let fakeCall = fakeCallSet.first {
@@ -54,7 +57,7 @@ struct ActivatedView: View {
                 })
                 Spacer()
             }
-            .padding(.top, deviceHeight < 800 ? 200 : 140)
+            .padding(.top, deviceHeight < 800 ? 120 : 60)
             .padding(.horizontal)
             
             VStack {
@@ -62,28 +65,13 @@ struct ActivatedView: View {
                     .font(.system(size: 16))
                     .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                     .foregroundStyle(.white)
-                    .padding(.top, 409)
+                    .padding(.top, 359)
                 Text("\(shortcut?.userActivity?.suggestedInvocationPhrase ?? "값이 설정되어 있지 않아요")")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundStyle(.white)
                     .padding(.top, 1)
+                
                 Spacer()
-                //                    Button(action: {
-                //                        guard let model = fakeCallSet.first else {
-                //                            return
-                //                        }
-                //                        isShowModal = true
-                //                        modelContext.delete(model)
-                //                    }, label: {
-                //                        VStack{
-                //                            Image("재설정버튼")
-                //                                .resizable()
-                //                                .scaledToFit()
-                //                                .frame(width: 79, height: 79)
-                //                            Text("재설정")
-                //                                .foregroundStyle(.black)
-                //                        }
-                //                    })
                 
                 Button(action: {
                     triggerFakeCall(callProviderDelegate: callProviderDelegate, caller: fakeCallSet.first?.caller ?? "엄마")
@@ -97,7 +85,7 @@ struct ActivatedView: View {
                             .foregroundStyle(.black)
                     }
                 })
-                .padding(.bottom, deviceHeight < 800 ? 200 : 140)
+                .padding(.bottom, deviceHeight < 800 ? 140 : 80)
                 .padding(.horizontal, 39)
             }
         }

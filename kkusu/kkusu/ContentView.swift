@@ -29,7 +29,7 @@ struct ContentView: View {
                     isWait = true
                     if let firstFakeCall = fakeCallSet.first {
                         let initialDelay = Double(firstFakeCall.delayTime)
-                        let reAlertDelay = initialDelay + 120
+//                        let reAlertDelay = initialDelay + 120
 
                         DispatchQueue.main.asyncAfter(deadline: .now() + initialDelay) {
                             triggerFakeCall(callProviderDelegate: callProviderDelegate, caller: firstFakeCall.caller)

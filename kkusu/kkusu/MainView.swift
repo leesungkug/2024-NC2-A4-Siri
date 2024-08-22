@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import Lottie
 
 struct MainView: View {
     @AppStorage("deviceHeight") var deviceHeight: Int = UserDefaults.standard.integer(forKey: "deviceHeight")
@@ -19,9 +18,10 @@ struct MainView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            GifView("mainBackground")
-                .frame(height: 990)
-
+//            GifView("mainBackground")
+//                .frame(height: 990)
+            GifImageView(gifName: "mainBackground")
+                .aspectRatio(contentMode: .fill)
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
@@ -58,7 +58,7 @@ struct MainView: View {
                     .padding(.bottom, 12)
 
             }
-            .padding(.vertical, deviceHeight < 800 ? 180 : 140)
+            .padding(.vertical, deviceHeight < 800 ? 120 : 80)
             
             if isInfo {
                 VStack(spacing: 0) {
@@ -112,7 +112,7 @@ struct MainView: View {
                 .background(Color.infoBackground.opacity(96.0))
                 .clipShape(RoundedRectangle(cornerRadius: 20.0))
                 .padding(.horizontal, 16)
-                .padding(.top , deviceHeight < 800 ? 220 : 180)
+                .padding(.top , deviceHeight < 800 ? 160 : 120)
             }
         }
         .ignoresSafeArea(.all)

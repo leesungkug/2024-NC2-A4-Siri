@@ -4,46 +4,55 @@
 //
 //  Created by sungkug_apple_developer_ac on 6/18/24.
 //
+
 import SwiftUI
-import WebKit
+import UIKit
+import ImageIO
 
-struct GifView: UIViewRepresentable {
-    private let name: String
+struct GifImageView: UIViewRepresentable {
+    let gifName: String
     
-    init(_ name: String) {
-        self.name = name
+    func makeUIView(context: Context) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        loadGif(name: gifName, into: imageView)
+        return imageView
     }
     
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-
-        if let url = Bundle.main.url(forResource: name, withExtension: "gif") {
-            if let data = try? Data(contentsOf: url) {
-                webView.load(
-                    data,
-                    mimeType: "image/gif",
-                    characterEncodingName: "UTF-8",
-                    baseURL: url.deletingLastPathComponent()
-                )
-            }
-        }
-
-        webView.scrollView.isScrollEnabled = false
-        webView.backgroundColor = .clear
-        webView.isOpaque = false
-        webView.translatesAutoresizingMaskIntoConstraints = false
+    func updateUIView(_ uiView: UIImageView, context: Context) {
+        // SwiftUI의 상태 변경에 따라 UI 업데이트를 여기에 구현
+    }
+    
+    private func loadGif(name: String, into imageView: UIImageView) {
+        guard
+            let gifURL = Bundle.main.url(forResource: name, withExtension: "gif"),
+            let gifData = try? Data(contentsOf: gifURL),
+            let source = CGImageSourceCreateWithData(gifData as CFData, nil)
+        else { return }
         
-        return webView
-    }
-    
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.reload()
+        let frameCount = CGImageSourceGetCount(source)
+        var images = [UIImage]()
+
+        (0..<frameCount)
+            .compactMap { CGImageSourceCreateImageAtIndex(source, $0, nil) }
+            .forEach { images.append(UIImage(cgImage: $0)) }
+
+        imageView.animationImages = images
+        imageView.animationDuration = TimeInterval(frameCount) * 0.05 // 0.05는 임의의 값
+        imageView.animationRepeatCount = 0
+        imageView.startAnimating()
     }
 }
 
+
 struct AontentView: View {
     var body: some View {
-        GifView("mainBackground")
+        ZStack {
+            GifImageView(gifName: "mainBackground")
+                .aspectRatio(contentMode: .fill)
+        }
+        .edgesIgnoringSafeArea(.all)
+        .background(.red)
     }
 }
 
