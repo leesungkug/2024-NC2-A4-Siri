@@ -54,8 +54,19 @@ struct MainView: View {
                 
                 Spacer()
                 
-                SetCallButton(showModal: $isShowModal)
-                    .padding(.bottom, 12)
+                Button {
+                    isShowModal.toggle()
+                } label: {
+                    Image("setbutton")
+                        .resizable()
+                        .scaledToFit()
+                }
+//                .padding(.bottom, 12)
+                .padding(.horizontal, 24)
+
+
+//                SetCallButton(showModal: $isShowModal)
+//                    .padding(.bottom, 12)
 
             }
             .padding(.vertical, deviceHeight < 800 ? 120 : 80)
