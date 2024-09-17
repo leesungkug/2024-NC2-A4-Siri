@@ -39,7 +39,6 @@ struct ActivatedView: View {
 //            GifView("checkBackground")
 //                .frame(height: 990)
             GifImageView(gifName: "checkBackground")
-            
                 .aspectRatio(contentMode: .fill)
             HStack {
                 Button(action: {
@@ -89,6 +88,7 @@ struct ActivatedView: View {
                 .padding(.horizontal, 39)
             }
         }
+        .ignoresSafeArea(.all)
         .onAppear{
             fetchShortcut()
         }

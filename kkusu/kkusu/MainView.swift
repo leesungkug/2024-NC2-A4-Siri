@@ -63,7 +63,7 @@ struct MainView: View {
                 }
 //                .padding(.bottom, 12)
                 .padding(.horizontal, 24)
-
+  
 
 //                SetCallButton(showModal: $isShowModal)
 //                    .padding(.bottom, 12)
